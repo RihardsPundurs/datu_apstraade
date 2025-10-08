@@ -2,9 +2,6 @@ import numpy as np
 import math
 import csv
 import matplotlib.pyplot as plt
-# import scipy
-# import pandas
-
 
 #primitiivais stjuudents
 stjudenta_koef_95 = {100:1.984, 80:1.990, 60:2.000, 50:2.009}
@@ -25,29 +22,12 @@ with open("data.csv") as raw_data:
 arr = np.array(pre_array)
 n = arr.shape[0]
 
-
-#datu apstraade
-rupjp_izlase = True
-
-izveele = True
-# izveele = input("Veikt rupjo izlasi (Y/N):\n").upper()
-# match izveele:
-# 	case "Y":
-# 		izveele = True
-# 	case "N":
-# 		izveele = False
-
-while rupjp_izlase:
-	rupjp_izlase = izveele
-
+while True:
 	average = np.sum(arr)/n
 	novirzes_arr = np.subtract(arr, average)
 	novirzes_arr_kvad = np.power(novirzes_arr, 2)
 	novirzes_arr_kvad_sum = np.sum(novirzes_arr_kvad)
 	dispersija = math.sqrt(novirzes_arr_kvad_sum/(n-1))
-
-	if not rupjp_izlase:
-		break
 
 	ticamiibas_intervaals = dispersija*stjudenta_koef_95[tuvaak(n)] ##pamainiit stjudenta_koef_95 tabulu uz kautko labaaku
 
